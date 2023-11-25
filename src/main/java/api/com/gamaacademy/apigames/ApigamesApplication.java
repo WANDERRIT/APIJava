@@ -9,8 +9,6 @@ public class ApigamesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApigamesApplication.class, args);
 
-
-
 	}
 
 }
