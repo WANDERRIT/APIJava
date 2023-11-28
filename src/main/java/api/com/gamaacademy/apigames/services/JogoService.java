@@ -23,7 +23,7 @@ public class JogoService {
 
     public List<Jogo> findAll(){
     List<Jogo> jogos = new ArrayList<>();
-    jogoRepository.findAll();
+    jogoRepository.findAll().forEach(jogos::add);
     return jogos;
     }
 

@@ -1,6 +1,7 @@
 package api.com.gamaacademy.apigames.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,17 +24,24 @@ public class Jogo {
     @Column(nullable = false, length = 50)
     private String website_jogo;
 
-    @OneToMany(mappedBy = "jogo")
+    @OneToMany(mappedBy = "jogo", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("jogo")
     private List<Ranking> rankings;
 
     @Deprecated
     public Jogo(){}
 
-    public Jogo(String nome_jogo, String nome_autor, String website_jogo, List<Ranking> rankings) {
+    public Jogo(String nome_jogo, String nome_autor, String website_jogo, List<Ranking> rankings,long id_jogo) {
         this.nome_jogo = nome_jogo;
         this.nome_autor = nome_autor;
         this.website_jogo = website_jogo;
         this.rankings = rankings;
+        this.id_jogo = id_jogo;
+    }
+
+
+    public void setId_jogo(long idJogo) {
+        this.id_jogo = idJogo;
     }
 
     public long getIdJogo() {

@@ -26,13 +26,17 @@ public class RankingService {
 
     public List<Ranking> findAll() {
         List<Ranking> rankings = new ArrayList<>();
-        rankingRepository.findAll();
+        rankingRepository.findAll().forEach(rankings::add);
         return rankings;
     }
 
     public void delete(Long id) {
         rankingRepository.deleteById(id);
     }
+
+   /* public List<Ranking> findRankingByJogadorId(Long id) {
+        return rankingRepository.findByJogadorId(id);
+    }*/
 
 
 }

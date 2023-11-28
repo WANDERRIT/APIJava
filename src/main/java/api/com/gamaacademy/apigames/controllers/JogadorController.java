@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping({"/games"})
+@CrossOrigin("*")
 public class JogadorController {
     private JogadorService jogadorService;
 
@@ -27,8 +28,8 @@ public class JogadorController {
     @GetMapping(path = {"/jogadores/{id}"})
     public ResponseEntity<Jogador> findbyId(@PathVariable Long id){
         return jogadorService.findById(id)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
+                .map(jogador -> ResponseEntity.ok().body(jogador))
+                .orElse(ResponseEntity.status(404).build()); /*ResponseEntitty.notFound()*/
     }
 
     @PostMapping(path = {"/jogadores"})
@@ -46,7 +47,7 @@ public class JogadorController {
                     jogador.setEmailJogador(updateJogador.getEmailJogador());
                     Jogador jogadorUpdated = jogadorService.createPlayer(jogador);
                     return ResponseEntity.ok().body(jogadorUpdated);
-                }).orElse(ResponseEntity.notFound().build());
+                }).orElse(ResponseEntity.status(404).build());/*ResponseEntitty.notFound()*/
     }
 
    @DeleteMapping(path ={"/jogadores/{id}"})
