@@ -13,66 +13,63 @@ import java.util.List;
 public class Jogador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_jogador;
+    private long idJogador;
 
     @Column(nullable = false, length = 50)
-    private String nome_jogador;
+    private String nomeJogador;
 
     @Column(nullable = false, length = 50)
-    private String nickname_jogador;
+    private String nicknameJogador;
 
     @Column(nullable = false, length = 50)
-    private String email_jogador;
+    private String emailJogador;
 
-    @OneToMany(mappedBy = "jogador", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("jogador")
+    @OneToMany(mappedBy = "jogador", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonIgnoreProperties("jogador")
     private List<Ranking> rankings;
+
 
     @Deprecated
     public Jogador(){}
 
-    public Jogador(String nome_jogador, String nickname_jogador, String email_jogador, List<Ranking> rankings,long id_jogador) {
-        this.nome_jogador = nome_jogador;
-        this.nickname_jogador = nickname_jogador;
-        this.email_jogador = email_jogador;
+    public Jogador(long idJogador, String nomeJogador, String nicknameJogador, String emailJogador, List<Ranking> rankings) {
+        this.idJogador = idJogador;
+        this.nomeJogador = nomeJogador;
+        this.nicknameJogador = nicknameJogador;
+        this.emailJogador = emailJogador;
         this.rankings = rankings;
-        this.id_jogador = id_jogador;
-    }
-
-    public void setId_jogador(long idJogador) {
-        this.id_jogador = idJogador;
     }
 
     public long getIdJogador() {
-        return id_jogador;
+        return idJogador;
+    }
+
+    public void setIdJogador(long idJogador) {
+        this.idJogador = idJogador;
     }
 
     public String getNomeJogador() {
-        return nome_jogador;
+        return nomeJogador;
     }
 
     public void setNomeJogador(String nomeJogador) {
-
-        this.nome_jogador = nomeJogador;
+        this.nomeJogador = nomeJogador;
     }
 
     public String getNicknameJogador() {
-
-        return nickname_jogador;
+        return nicknameJogador;
     }
 
     public void setNicknameJogador(String nicknameJogador) {
-
-        this.nickname_jogador = nicknameJogador;
+        this.nicknameJogador = nicknameJogador;
     }
 
     public String getEmailJogador() {
-
-        return email_jogador;
+        return emailJogador;
     }
 
     public void setEmailJogador(String emailJogador) {
-        this.email_jogador = emailJogador;
+        this.emailJogador = emailJogador;
     }
 
     public List<Ranking> getRankings() {
@@ -86,10 +83,10 @@ public class Jogador {
     @Override
     public String toString() {
         return "Jogador{" +
-                "id_jogador=" + id_jogador +
-                ", nome_jogador='" + nome_jogador + '\'' +
-                ", nickname_jogador='" + nickname_jogador + '\'' +
-                ", email_jogador='" + email_jogador + '\'' +
+                "idJogador=" + idJogador +
+                ", nomeJogador='" + nomeJogador + '\'' +
+                ", nicknameJogador='" + nicknameJogador + '\'' +
+                ", emailJogador='" + emailJogador + '\'' +
                 ", rankings=" + rankings +
                 '}';
     }

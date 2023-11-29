@@ -45,6 +45,7 @@ public class JogadorController {
                     jogador.setNomeJogador(updateJogador.getNomeJogador());
                     jogador.setNicknameJogador(updateJogador.getNicknameJogador());
                     jogador.setEmailJogador(updateJogador.getEmailJogador());
+                    jogador.setRankings(updateJogador.getRankings());
                     Jogador jogadorUpdated = jogadorService.createPlayer(jogador);
                     return ResponseEntity.ok().body(jogadorUpdated);
                 }).orElse(ResponseEntity.status(404).build());/*ResponseEntitty.notFound()*/

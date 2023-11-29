@@ -45,6 +45,7 @@ public class JogoController {
                  jogo.setNomeJogo(jogoUpdated.getNomeJogo());
                  jogo.setNomeAutor(jogoUpdated.getNomeAutor());
                  jogo.setWebsiteJogo(jogoUpdated.getWebsiteJogo());
+                 jogo.setRankings(jogoUpdated.getRankings());
                  Jogo updatedGame = jogoService.createGame(jogo);
                  return ResponseEntity.status(201).body(updatedGame);
              }).orElse(ResponseEntity.notFound().build());

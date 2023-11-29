@@ -13,40 +13,40 @@ public class Ranking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_ranking;
+    private long idRanking;
     @Column(nullable = false)
     private int pontuacao;
     @Column(nullable = true)
 
-    private String data_pontuacao;
+    private String dataPontuacao;
 
-    @ManyToOne(targetEntity = Jogador.class)
+    @ManyToOne(targetEntity = Jogador.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnore()
-    @JoinColumn(name = "id_jogador")
+    @JoinColumn(name = "idJogador")
     private Jogador jogador;
 
-    @ManyToOne(targetEntity = Jogo.class)
-    @JsonIgnore()
-    @JoinColumn(name = "id_jogo")
+    @ManyToOne(targetEntity = Jogo.class )
+     @JsonIgnore()
+    @JoinColumn(name = "idJogo")
     private Jogo jogo;
 
     @Deprecated
     public Ranking(){}
 
-    public Ranking(int pontuacao, String data_pontuacao, Jogador jogador, Jogo jogo,long id_ranking) {
+    public Ranking(long idRanking, int pontuacao, String dataPontuacao, Jogador jogador, Jogo jogo) {
+        this.idRanking = idRanking;
         this.pontuacao = pontuacao;
-        this.data_pontuacao = data_pontuacao;
+        this.dataPontuacao = dataPontuacao;
         this.jogador = jogador;
         this.jogo = jogo;
-        this.id_ranking = id_ranking;
-    }
-
-    public void setId_ranking(long idRanking) {
-        this.id_ranking = idRanking;
     }
 
     public long getIdRanking() {
-        return id_ranking;
+        return idRanking;
+    }
+
+    public void setIdRanking(long idRanking) {
+        this.idRanking = idRanking;
     }
 
     public int getPontuacao() {
@@ -58,11 +58,11 @@ public class Ranking {
     }
 
     public String getDataPontuacao() {
-        return data_pontuacao;
+        return dataPontuacao;
     }
 
     public void setDataPontuacao(String dataPontuacao) {
-        this.data_pontuacao = dataPontuacao;
+        this.dataPontuacao = dataPontuacao;
     }
 
     public Jogador getJogador() {
@@ -84,9 +84,9 @@ public class Ranking {
     @Override
     public String toString() {
         return "Ranking{" +
-                "id_ranking=" + id_ranking +
+                "idRanking=" + idRanking +
                 ", pontuacao=" + pontuacao +
-                ", data_pontuacao=" + data_pontuacao +
+                ", dataPontuacao='" + dataPontuacao + '\'' +
                 ", jogador=" + jogador +
                 ", jogo=" + jogo +
                 '}';

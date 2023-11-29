@@ -12,64 +12,64 @@ public class Jogo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_jogo;
+    private long idJogo;
 
     @Column(nullable = false, length = 100)
-    private String nome_jogo;
+    private String nomeJogo;
 
     @Column(nullable = false, length = 50)
-    private String nome_autor;
+    private String nomeAutor;
 
 
     @Column(nullable = false, length = 50)
-    private String website_jogo;
+    private String websiteJogo;
 
     @OneToMany(mappedBy = "jogo", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("jogo")
+//    @JsonIgnoreProperties("jogo")
     private List<Ranking> rankings;
+
 
     @Deprecated
     public Jogo(){}
 
-    public Jogo(String nome_jogo, String nome_autor, String website_jogo, List<Ranking> rankings,long id_jogo) {
-        this.nome_jogo = nome_jogo;
-        this.nome_autor = nome_autor;
-        this.website_jogo = website_jogo;
+    public Jogo(long idJogo, String nomeJogo, String nomeAutor, String websiteJogo, List<Ranking> rankings) {
+        this.idJogo = idJogo;
+        this.nomeJogo = nomeJogo;
+        this.nomeAutor = nomeAutor;
+        this.websiteJogo = websiteJogo;
         this.rankings = rankings;
-        this.id_jogo = id_jogo;
-    }
-
-
-    public void setId_jogo(long idJogo) {
-        this.id_jogo = idJogo;
     }
 
     public long getIdJogo() {
-        return id_jogo;
+        return idJogo;
+    }
+
+    public void setIdJogo(long idJogo) {
+        this.idJogo = idJogo;
     }
 
     public String getNomeJogo() {
-        return nome_jogo;
+        return nomeJogo;
     }
 
     public void setNomeJogo(String nomeJogo) {
-        this.nome_jogo = nomeJogo;
+        this.nomeJogo = nomeJogo;
     }
 
     public String getNomeAutor() {
-        return nome_autor;
+        return nomeAutor;
     }
 
     public void setNomeAutor(String nomeAutor) {
-        this.nome_autor = nomeAutor;
+        this.nomeAutor = nomeAutor;
     }
 
     public String getWebsiteJogo() {
-        return website_jogo;
+        return websiteJogo;
     }
 
     public void setWebsiteJogo(String websiteJogo) {
-        this.website_jogo = websiteJogo;
+        this.websiteJogo = websiteJogo;
     }
 
     public List<Ranking> getRankings() {
@@ -83,10 +83,10 @@ public class Jogo {
     @Override
     public String toString() {
         return "Jogo{" +
-                "id_jogo=" + id_jogo +
-                ", nome_jogo='" + nome_jogo + '\'' +
-                ", nome_autor='" + nome_autor + '\'' +
-                ", website_jogo='" + website_jogo + '\'' +
+                "idJogo=" + idJogo +
+                ", nomeJogo='" + nomeJogo + '\'' +
+                ", nomeAutor='" + nomeAutor + '\'' +
+                ", websiteJogo='" + websiteJogo + '\'' +
                 ", rankings=" + rankings +
                 '}';
     }

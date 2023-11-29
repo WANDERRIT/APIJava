@@ -34,9 +34,5 @@ public class RankingService {
         rankingRepository.deleteById(id);
     }
 
-   /* public List<Ranking> findRankingByJogadorId(Long id) {
-        return rankingRepository.findByJogadorId(id);
-    }*/
-
 
 }
